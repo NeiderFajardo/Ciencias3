@@ -1,6 +1,7 @@
 from pila import *
 from arbol import *
 
+cuentaNumeros=0
 aux = 0
 pila=Pila()
 lista1 =[]
@@ -19,7 +20,7 @@ def errorLexico(pos):
     print lista1
     exit()
 
-def convertir(lista, pila, aux):
+def convertir(lista, pila, aux,cuentaNumeros):
     aux=aux+1
     if lista != []:
         if lista[0] in "+-*/=":
@@ -31,13 +32,15 @@ def convertir(lista, pila, aux):
                 nodo_izq = pila.desapilar()
             else:
                 errorLexico(aux)
-            #if pila.es_vacia() == False:
-                #print pila.desapilar().valor
-                #print lista[0]
             pila.apilar(Nodo(lista[0],nodo_izq,nodo_der))
+            cuentaNumeros=0
         else:
-            pila.apilar(Nodo(lista[0]))
-        return convertir(lista[1:],pila,aux)
+            if cuentaNumeros<2:
+                pila.apilar(Nodo(lista[0]))
+                cuentaNumeros=cuentaNumeros+1
+            else:
+                errorLexico(aux)
+        return convertir(lista[1:],pila,aux,cuentaNumeros)
 
 def evaluar(arbol):
     if arbol.valor == "=":
@@ -57,7 +60,7 @@ def evaluar(arbol):
 var =(cargarArchivo("archivo.txt"))
 lista1 = var[0].split()
 def main():
-    convertir(lista1, pila, aux)
+    convertir(lista1, pila, aux,cuentaNumeros)
     print (evaluar(pila.desapilar()))
 
 
