@@ -3,16 +3,12 @@ from arbol import *
 
 class Compilador:
     def __init__(self):
-        #Guarda la variable incognita
         self.variable=""
         self.errorSimbolo=0
         self.errorNumero=0
-        #Operacion a realizar
         self.lista=[]
-        #Pila para ordenar el arbol
         self.pilaNodos=Pila()
 
-    #Verifica que no hay nada después del igual, que antes del igual vaya una variable
     def verificar(self, sentencia):
         if sentencia[len(sentencia)-1]=="=":
             sentencia.pop()
