@@ -1,0 +1,10 @@
+x:=5+4*23
+si(x:= 8){
+  escribir "HolaMubndo"
+}luego{
+  leer x
+  para(x :=0 ; x<= 8 ; x++){
+    escribir x
+    x := 2
+  }
+}
