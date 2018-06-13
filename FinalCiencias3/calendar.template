@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{entity.name}}</title>
+    <link rel="stylesheet" type="text/css" href="../Estilos/style.css">
+    <script language="javascript" src="../Estilos/inputs.js"></script>
+</head>
+<body>
+  <h1 style="text-align: center">{{entity.name|capitalize}}</h1>
+  <div class="inputs">
+    <div class="btn-group" align="center">
+    {%for property in entity.properties[1:]%}
+      {%if property is entity%}
+        <a href="{{property.type.name}}.html">{{property.name}}</a>
+      {%else%}
+        <input type="text" name="{{property.name}}" placeholder="{{property.name}}"/>
+      {%endif%}
+    {%endfor%}
+  </div>
+</div>
+</body>
+</html>

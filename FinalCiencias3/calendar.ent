@@ -1,0 +1,24 @@
+entity Calendario{
+  anio : integer
+  Enero : Mes
+  Febrero : Mes
+  Marzo : Mes
+  Abril : Mes
+  Mayo : Mes
+  Junio : Mes
+  Julio : Mes
+  Agosto : Mes
+  Septiembre : Mes
+  Octubre : Mes
+  Noviembre : Mes
+  Diciembre : Mes
+}
+entity Mes{
+    nombre : string
+    dias : Dia
+}
+entity Dia{
+    numero : integer
+    hora: string
+    nota: string
+}
